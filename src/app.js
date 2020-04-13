@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import AppRouter from "./routers/AppRouter"
-import { createStore } from "redux"
+import { createStore, combineReducers } from "redux"
 import { Provider } from "react-redux"
 import { v1 as uuidv1 } from "uuid"
 import "normalize.css/normalize.css"
@@ -13,7 +13,8 @@ const addRecipe = (
   {
     title = "",
     instructions = "",
-    ingredients = []
+    ingredients = [],
+    ingredientMessage
   } = {}
 ) => ({
   type: "ADD_RECIPE",
@@ -21,7 +22,8 @@ const addRecipe = (
     id: uuidv1(),
     title,
     instructions,
-    ingredients
+    ingredients,
+    ingredientMessage
   }
 })
 
@@ -37,13 +39,13 @@ const recipeReducer = (state = recipeReducerDefaultState, action) => {
   }
 }
 
-const store = createStore(recipeReducer)
+const store = createStore(combineReducers({recipes: recipeReducer}))
 
 store.subscribe(() => {
   console.log(store.getState())
 })
 
-store.dispatch(addRecipe({title: "recipe 1", instructions: "do some stuff", ingredients: ["one", "two", "three"]}))
+store.dispatch(addRecipe({title: "recipe 1", instructions: "do some stuff", ingredients: ["one", "two", "three"], ingredientMessage: "You have none of the ingredients"}))
 
 
 const jsx = (
