@@ -1,16 +1,27 @@
 import React from "react"
 import IngredientList from "./IngredientList"
 
-const RecipeForm = () => (
-  <form>
-    <input type="text" placeholder="Recipe title" />
-    <textarea placeholder="Recipe instructions" />
-    <IngredientList />
-    <button type="submit">Save Recipe</button>
-  </form>
-)
-
-export default RecipeForm
+export default class RecipeForm extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      title: "",
+      instructions: "",
+      ingredients: [],
+      ingedientMessage: ""
+    }
+  }
+  render() {
+    return (
+      <form>
+        <input type="text" placeholder="Recipe title" />
+        <textarea placeholder="Recipe instructions" />
+        <IngredientList />
+        <button type="submit">Save Recipe</button>
+      </form>
+    )
+  }
+} 
 
 // for edit page only
 // <div>
