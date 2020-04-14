@@ -9,14 +9,12 @@ import "./styles/styles.scss"
 
 const recipeReducerDefaultState = []
 
-const addRecipe = (
-  {
-    title = "",
-    instructions = "",
-    ingredients = [],
-    ingredientMessage
-  } = {}
-) => ({
+const addRecipe = ({
+  title = "",
+  instructions = "",
+  ingredients = [],
+  ingredientMessage
+} = {}) => ({
   type: "ADD_RECIPE",
   recipe: {
     id: uuidv1(),
@@ -30,29 +28,49 @@ const addRecipe = (
 const recipeReducer = (state = recipeReducerDefaultState, action) => {
   switch (action.type) {
     case "ADD_RECIPE":
-      return [
-        ...state,
-        action.recipe
-      ]
+      return [...state, action.recipe]
     default:
-      return state  
+      return state
   }
 }
 
-const store = createStore(combineReducers({recipes: recipeReducer}))
+const store = createStore(combineReducers({ recipes: recipeReducer }))
 
 store.subscribe(() => {
   console.log(store.getState())
 })
 
-store.dispatch(addRecipe({title: "recipe 1", instructions: "do some stuff", ingredients: ["one", "two", "three"], ingredientMessage: "You have none of the ingredients"}))
+store.dispatch(
+  addRecipe({
+    title: "recipe 1",
+    instructions: "do some stuff",
+    ingredients: ["one", "two", "three"],
+    ingredientMessage: "You have none of the ingredients"
+  })
+)
 
+store.dispatch(
+  addRecipe({
+    title: "recipe 2",
+    instructions: "instructions instructions",
+    ingredients: ["spicy", "spice", "vegetable"],
+    ingredientMessage: "You have some of the ingredients"
+  })
+)
+
+store.dispatch(
+  addRecipe({
+    title: "recipe 3",
+    instructions: "tesssssssssssssst",
+    ingredients: ["test", "asdf", "fdsa"],
+    ingredientMessage: "You have all of the ingredients"
+  })
+)
 
 const jsx = (
   <Provider store={store}>
     <AppRouter />
   </Provider>
 )
-
 
 ReactDOM.render(jsx, document.getElementById("app"))
