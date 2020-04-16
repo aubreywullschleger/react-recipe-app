@@ -5,10 +5,10 @@ export default class RecipeForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      title: "",
-      instructions: "",
-      ingredients: [],
-      ingredientMessage: ""
+      title: props.recipe ? props.recipe.title : "",
+      instructions: props.recipe ? props.recipe.instructions : "",
+      ingredients: props.recipe ? props.recipe.ingredients : [],
+      ingredientMessage: props.recipe ? props.recipe.ingredientMessage : ""
     }
   }
 
