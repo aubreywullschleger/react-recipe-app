@@ -41,7 +41,9 @@ class IngredientList extends React.Component {
         prevState.ingredient,
       ],
       ingredient: new Ingredient(uuidv1(), "", false),
-    }))
+    }), () => {
+      this.props.ingredientListChange(this.state.localIngredientList)
+    })
   }
 
   handleRemove(id) {

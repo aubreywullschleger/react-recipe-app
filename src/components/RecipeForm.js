@@ -8,20 +8,27 @@ export default class RecipeForm extends React.Component {
       title: "",
       instructions: "",
       ingredients: [],
-      ingedientMessage: ""
+      ingedientMessage: "",
     }
   }
+
+  ingredientListChange = (ingredients) => {
+    this.setState((prevState) => ({
+      ingredients: [...prevState.ingredients, ingredients],
+    }))
+  }
+
   render() {
     return (
       <form>
         <input type="text" placeholder="Recipe title" />
         <textarea placeholder="Recipe instructions" />
-        <IngredientList />
+        <IngredientList ingredientListChange={this.ingredientListChange} />
         <button type="submit">Save Recipe</button>
       </form>
     )
   }
-} 
+}
 
 // for edit page only
 // <div>

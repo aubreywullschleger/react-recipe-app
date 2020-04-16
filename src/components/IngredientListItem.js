@@ -2,7 +2,11 @@ import React from "react"
 
 const IngredientListItem = (props) => (
   <div>
-    <input type="checkbox" onChange={() => props.handleIngredientToggle(props.ingredient.id)} />
+    <input
+      type="checkbox"
+      value={props.ingredient}
+      onChange={() => props.handleIngredientToggle(props.ingredient.id)}
+    />
     <span>{props.ingredient.name}</span>
     <button type="button" onClick={() => props.onClick(props.ingredient.id)}>
       Remove
