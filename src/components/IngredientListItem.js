@@ -4,7 +4,7 @@ const IngredientListItem = (props) => (
   <div>
     <input
       type="checkbox"
-      value={props.ingredient}
+      value={props.ingredient.hasIngredient}
       onChange={() => props.handleIngredientToggle(props.ingredient.id)}
     />
     <span>{props.ingredient.name}</span>

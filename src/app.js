@@ -2,6 +2,7 @@ import React from "react"
 import ReactDOM from "react-dom"
 import AppRouter from "./routers/AppRouter"
 import { createStore, combineReducers } from "redux"
+import { addRecipe } from "./actions/recipes"
 import { Provider } from "react-redux"
 import { v1 as uuidv1 } from "uuid"
 import "normalize.css/normalize.css"
@@ -9,21 +10,7 @@ import "./styles/styles.scss"
 
 const recipeReducerDefaultState = []
 
-const addRecipe = ({
-  title = "",
-  instructions = "",
-  ingredients = [],
-  ingredientMessage
-} = {}) => ({
-  type: "ADD_RECIPE",
-  recipe: {
-    id: uuidv1(),
-    title,
-    instructions,
-    ingredients,
-    ingredientMessage
-  }
-})
+
 
 const recipeReducer = (state = recipeReducerDefaultState, action) => {
   switch (action.type) {

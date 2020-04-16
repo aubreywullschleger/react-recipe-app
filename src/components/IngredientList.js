@@ -35,15 +35,18 @@ class IngredientList extends React.Component {
   }
 
   handleAddIngredientItem() {
-    this.setState((prevState) => ({
-      localIngredientList: [
-        ...prevState.localIngredientList,
-        prevState.ingredient,
-      ],
-      ingredient: new Ingredient(uuidv1(), "", false),
-    }), () => {
-      this.props.ingredientListChange(this.state.localIngredientList)
-    })
+    this.setState(
+      (prevState) => ({
+        localIngredientList: [
+          ...prevState.localIngredientList,
+          prevState.ingredient,
+        ],
+        ingredient: new Ingredient(uuidv1(), "", false),
+      }),
+      () => {
+        this.props.ingredientListChange(this.state.localIngredientList)
+      }
+    )
   }
 
   handleRemove(id) {
@@ -51,18 +54,30 @@ class IngredientList extends React.Component {
     const updatedIngredientList = currentIngredientList.filter(
       (ingredient) => ingredient.id !== id
     )
-    this.setState(() => ({ localIngredientList: updatedIngredientList }))
+    this.setState(
+      () => ({ localIngredientList: updatedIngredientList }),
+      () => {
+        this.props.ingredientListChange(this.state.localIngredientList)
+      }
+    )
   }
-  
+
   handleIngredientToggle(id) {
-    const currentIngredientList = [...this.state.localIngredientList]
+    const currentIngredientList = JSON.parse(
+      JSON.stringify(this.state.localIngredientList)
+    )
     const foundIngredientIndex = currentIngredientList.findIndex(
       (ingredient) => ingredient.id === id
     )
     currentIngredientList[
       foundIngredientIndex
     ].hasIngredient = !currentIngredientList[foundIngredientIndex].hasIngredient
-    this.setState(() => ({ localIngredientList: currentIngredientList }))
+    this.setState(
+      () => ({ localIngredientList: currentIngredientList }),
+      () => {
+        this.props.ingredientListChange(this.state.localIngredientList)
+      }
+    )
   }
 
   render() {
