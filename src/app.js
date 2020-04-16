@@ -32,7 +32,7 @@ store.dispatch(
     title: "recipe 1",
     instructions: "do some stuff",
     ingredients: ["one", "two", "three"],
-    ingredientMessage: "You have none of the ingredients"
+    ingredientMessage: "none"
   })
 )
 
@@ -41,7 +41,7 @@ store.dispatch(
     title: "recipe 2",
     instructions: "instructions instructions",
     ingredients: ["spicy", "spice", "vegetable"],
-    ingredientMessage: "You have some of the ingredients"
+    ingredientMessage: "some"
   })
 )
 
@@ -50,7 +50,7 @@ store.dispatch(
     title: "recipe 3",
     instructions: "tesssssssssssssst",
     ingredients: ["test", "asdf", "fdsa"],
-    ingredientMessage: "You have all of the ingredients"
+    ingredientMessage: "all"
   })
 )
 
