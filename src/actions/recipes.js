@@ -22,4 +22,9 @@ const editRecipe = (id, updates) => ({
   updates
 })
 
-export { addRecipe, editRecipe }
+const removeRecipe = id => ({
+  type: "REMOVE_RECIPE",
+  id
+})
+
+export { addRecipe, editRecipe, removeRecipe }

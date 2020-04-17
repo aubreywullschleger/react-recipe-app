@@ -77,9 +77,3 @@ export default class RecipeForm extends React.Component {
     )
   }
 }
-
-// for edit page only
-// <div>
-//   <h2>Danger Zone</h2>
-//   <button>Delete Recipe</button>
-// </div>
