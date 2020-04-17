@@ -15,7 +15,7 @@ class IngredientList extends React.Component {
     super(props)
     this.state = {
       ingredient: new Ingredient(uuidv1(), "", false),
-      localIngredientList: [],
+      localIngredientList: props.ingredients ? props.ingredients : [],
     }
     this.handleUpdateIngredientName = this.handleUpdateIngredientName.bind(this)
     this.handleAddIngredientItem = this.handleAddIngredientItem.bind(this)

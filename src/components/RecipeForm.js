@@ -71,7 +71,7 @@ export default class RecipeForm extends React.Component {
           value={this.state.instructions}
           onChange={this.onInstructionsChange}
         />
-        <IngredientList ingredientListChange={this.ingredientListChange} />
+        <IngredientList ingredients={this.state.ingredients} ingredientListChange={this.ingredientListChange} />
         <button type="submit">Save Recipe</button>
       </form>
     )
