@@ -16,4 +16,10 @@ const addRecipe = ({
   }
 })
 
-export { addRecipe }
+const editRecipe = (id, updates) => ({
+  type: "EDIT_RECIPE",
+  id,
+  updates
+})
+
+export { addRecipe, editRecipe }

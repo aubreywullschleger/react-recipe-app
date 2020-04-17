@@ -1,12 +1,9 @@
 import React from "react"
 
-const IngredientListItem = (props) => {
-  console.log(props.ingredient)
-  return (
+const IngredientListItem = (props) => (
   <div>
     <input
       type="checkbox"
-      // value={props.ingredient.hasIngredient}
       onChange={() => props.handleIngredientToggle(props.ingredient.id)}
       checked={props.ingredient.hasIngredient}
     />
@@ -15,6 +12,6 @@ const IngredientListItem = (props) => {
       Remove
     </button>
   </div>
-)}
+)
 
 export default IngredientListItem
